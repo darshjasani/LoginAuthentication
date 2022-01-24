@@ -1,7 +1,34 @@
-{% extends 'base.html' %}
-{% block title %}Logout{% endblock title %}
-{% block body %}
-<h1>Logged Out Successfully!!
-</h1>
-<a href="login">Click Here</a> to login again
-{% endblock body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My {% block title %}{% endblock title %} Page in Django</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('https://images.unsplash.com/photo-1608389168343-ba8aa0cb3a63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'); no-repeat center center fixed
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h2{
+            margin-top:100px;
+            text-align:center;
+        }
+        a{
+            text-decoration:none!important;
+        }
+        a:hover{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        <a href="login">Click here</a> to login again :)
+    </h2>
+</body>
+</html>

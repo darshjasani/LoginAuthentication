@@ -35,7 +35,22 @@ def signinUser(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         checkpassword = request.POST.get('checkpassword')
-        if username != '' and password == checkpassword:
+        if username == '':
+            messages.info(request,'Please enter the username')
+            return render(request,'signin.html')
+        elif email == '':
+            messages.info(request,'Please enter the email id')
+            return render(request,'signin.html')
+        elif password == '':
+            messages.info(request,'Please enter the password')
+            return render(request,'signin.html')
+        elif checkpassword == '':
+            messages.info(request,'Please enter the check password')
+            return render(request,'signin.html')
+        elif password != checkpassword :
+            messages.info(request,'Passwords do not match. Enter Again')
+            return render(request,'signin.html')
+        elif username != '' and password == checkpassword:
             if len(password) >= 8 and  not password.isdigit() :
                 user =  User(username=username,email=email)
                 user.set_password(password)
