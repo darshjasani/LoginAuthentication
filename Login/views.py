@@ -15,7 +15,12 @@ def loginUser(request):
     if request.method == 'POST':
         username1 = request.POST.get('name')
         password1 = request.POST.get('password')
-        print(username1,password1)
+        if username1 == '':
+            messages.info(request,'Please enter the username')
+            return render(request,'login.html')
+        elif password1 == '':
+            messages.info(request,'Please enter the password')
+            return render(request,'login.html')
         user = authenticate(request,username=username1, password=password1)
 
         if user is not None:
@@ -25,7 +30,7 @@ def loginUser(request):
             return redirect('/')
         
         else :
-            messages.info(request,'Loged in failed')
+            messages.info(request,'Given username or passowrd is incorrect. Please enter again!!')
 
     return render(request,'login.html')
 
@@ -52,6 +57,12 @@ def signinUser(request):
             return render(request,'signin.html')
         elif username != '' and password == checkpassword:
             if len(password) >= 8 and  not password.isdigit() :
+                if User.objects.filter(username=username).exists():
+                    messages.info(request,'Username already exists. Enter new username')
+                    return render(request,'signin.html')
+                elif User.objects.filter(email=email).exists():
+                    messages.info(request,'Email Id already exists. Enter new Email Id')
+                    return render(request,'signin.html')
                 user =  User(username=username,email=email)
                 user.set_password(password)
                 user.save()
