@@ -16,7 +16,7 @@
         -o-background-size: cover;
         background-size: cover;
       }
-      .loginarea{
+      .resetpwd{
         background-image:url('https://images.unsplash.com/photo-1641892157175-8fe6d756e459?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80');
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -31,21 +31,11 @@
         border-radius:15px;
         
       }
-
-      .login, .signup{
-        font-size:30px;
-        color:yellow;
-        text-decoration:none!important;
-      }
-      .login:hover, .signup:hover{
-        color:brown;
-      }
-
-      #username,#name,#password,#pass{
+      #password,#pass,#checkpassword,#checkpass{
         margin-top:20px;
         font-size:25px;
       }
-      #username,#pass{
+      #pass,#checkpass{
         color:yellow;
       }
 
@@ -61,14 +51,6 @@
       .okay{
         border:2px solid black;
       }
-      a{
-        font-size:20px;
-        color:yellow;
-        text-decoration:none!important;
-      }
-      a:hover{
-        color:red;
-      }
 
 
     </style>
@@ -79,34 +61,17 @@
           {% if messages %}
               {% for message in messages %}
               <div class="alert alert-{{ message.tags }} alert-dismissible">
-                  <a href="login" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <a href="resetpwd" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                   <strong>{{ message }}</strong>
               </div>
               {% endfor %}
           {% endif %}
       </div>
     </div>
-    <div class="loginarea">
-      <div class="row my-2 ">
-        <div class="col-lg-12 text-center" >
-          <a href="login" class="login">Login In</a><label style="font-size:30px;color:yellow">&nbsp;/&nbsp;</label><a href="signin" class="signup">Sign Up</a>
-        </div>
-      </div>
+    <div class="resetpwd">
         
-      <form method="post" action="login">
+      <form method="post" action="resetpwd">
           {% csrf_token %}
-          <div class="row my-2">
-            <div class="col-5  text-right">
-              <label for="name" id="username">User Name :</label>
-            </div>
-            <div class="col-3">
-              {% if  User %}
-                  <input type="text"  id="name" name="name" class="notokay" >
-              {% else %}
-                  <input type="text"  id="name" name="name" class="okay" value="{{username}}">
-              {% endif %}
-            </div>
-          </div>
           <div class="row my-2 ">
             <div class="col-5 text-right">
               <label for="password" class="form-label" id="pass">Password :</label>
@@ -119,10 +84,17 @@
               {% endif %}
             </div>
           </div>
-          <div class="row my-2">
-              <div class="col-10 text-right">
-                  <a href="forgetpwd">Forgot Password</a>
-              </div>
+          <div class="row my-2 ">
+            <div class="col-5 text-right">
+              <label for="password" class="form-label" id="checkpass"> Check Password :</label>
+            </div>
+            <div class="col-3">
+              {% if  checkpassword %}
+                  <input type="password"  id="checkpassword" name="checkpassword" class="notokay">
+              {% else %}
+              <input type="password"  id="checkpassword" name="checkpassword" class="okay" value="{{checkpassword1}}">
+              {% endif %}
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-12 text-center">

@@ -10,18 +10,14 @@
     <style>
 
       body{
-        background-image: url('https://images.unsplash.com/photo-1642418379704-cee4daa4679b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2167&q=80'); no-repeat center center fixed
+        background-image: url('https://images.unsplash.com/photo-1517707711963-adf9078bdf01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'); no-repeat center center fixed
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
       }
-      .loginarea{
-        background-image:url('https://images.unsplash.com/photo-1641892157175-8fe6d756e459?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80');
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+      .otparea{
+        background-color:white;
         position:fixed;
         width:45%;
         height:45%;
@@ -32,21 +28,12 @@
         
       }
 
-      .login, .signup{
-        font-size:30px;
-        color:yellow;
-        text-decoration:none!important;
-      }
-      .login:hover, .signup:hover{
-        color:brown;
-      }
-
-      #username,#name,#password,#pass{
+      #otp,#otp1{
         margin-top:20px;
         font-size:25px;
       }
-      #username,#pass{
-        color:yellow;
+      #otp{
+        color:black;
       }
 
       button{
@@ -61,15 +48,11 @@
       .okay{
         border:2px solid black;
       }
-      a{
-        font-size:20px;
-        color:yellow;
-        text-decoration:none!important;
+      .time{
+          position:fixed;
+          top:38%;
+          left:60%;
       }
-      a:hover{
-        color:red;
-      }
-
 
     </style>
 <body>
@@ -79,49 +62,31 @@
           {% if messages %}
               {% for message in messages %}
               <div class="alert alert-{{ message.tags }} alert-dismissible">
-                  <a href="login" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <a href="otppage" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                   <strong>{{ message }}</strong>
               </div>
               {% endfor %}
           {% endif %}
       </div>
     </div>
-    <div class="loginarea">
-      <div class="row my-2 ">
-        <div class="col-lg-12 text-center" >
-          <a href="login" class="login">Login In</a><label style="font-size:30px;color:yellow">&nbsp;/&nbsp;</label><a href="signin" class="signup">Sign Up</a>
-        </div>
-      </div>
-        
-      <form method="post" action="login">
+    <div class="otparea">
+      <form method="post" action="otppage">
           {% csrf_token %}
           <div class="row my-2">
             <div class="col-5  text-right">
-              <label for="name" id="username">User Name :</label>
+              <label for="name" id="otp">OTP:</label>
             </div>
             <div class="col-3">
-              {% if  User %}
-                  <input type="text"  id="name" name="name" class="notokay" >
+              {% if  otp %}
+                  <input type="text"  id="otp1" name="otp" class="notokay" >
               {% else %}
-                  <input type="text"  id="name" name="name" class="okay" value="{{username}}">
-              {% endif %}
-            </div>
-          </div>
-          <div class="row my-2 ">
-            <div class="col-5 text-right">
-              <label for="password" class="form-label" id="pass">Password :</label>
-            </div>
-            <div class="col-3">
-              {% if  password %}
-                  <input type="password"  id="password" name="password" class="notokay">
-              {% else %}
-              <input type="password"  id="password" name="password" class="okay" value="{{password1}}">
+                  <input type="text"  id="otp1" name="otp" class="okay" value="{{otp1}}">
               {% endif %}
             </div>
           </div>
           <div class="row my-2">
-              <div class="col-10 text-right">
-                  <a href="forgetpwd">Forgot Password</a>
+              <div class="col-5">
+                <div class="time"><span id="time">02:00</span></div>
               </div>
           </div>
           <div class="row">
@@ -132,5 +97,29 @@
         </form>
     </div>
   </div>
+  <script>
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+    
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.textContent = minutes + ":" + seconds;
+    
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+    
+    window.onload = function () {
+        var fiveMinutes = 60 * 2,
+            display = document.querySelector('#time');
+        startTimer(fiveMinutes, display);
+    };
+  </script>
 </body>
 </html>
