@@ -53,20 +53,6 @@
         margin-left:25px;
         font-size:20px;
       }
-      .icon {
-        font-size:24px;
-        color:yellow;
-        position:fixed;
-        top:50%;
-        left:65%;
-      }
-
-      .notokay{
-        border:5px solid red;
-      }
-      .okay{
-        border:2px solid black;
-      }
     </style>
 </head>
 <body>  
@@ -97,50 +83,34 @@
               <label for="name" id="username">User Name :</label>
             </div>
             <div class="col-3">
-              {% if  User %}
-                  <input type="text"  id="name" name="name" class="notokay" >
-              {% else %}
-                  <input type="text"  id="name" name="name" class="okay" value="{{username}}">
-              {% endif %}
+                  <input type="text"  id="name" name="name">
             </div>
           </div>
           <div class="row my-2 ">
             <div class="col-5 text-right">
-              <label for="email" class="form-label" id="email">Email ID :</label>
+              <label for="email" class="form-label" id="email">Email ID:</label>
             </div>
             <div class="col-3">
-              {% if  email %}
-                  <input type="email"  id="emailid" name="email" class="notokay" >
-              {% else %}
-                  <input type="email"  id="emailid" name="email" class="okay" value="{{emailid}}">
-              {% endif %}
+              <input type="email" id="emailid" name="email">
             </div>
           </div>
           <div class="row my-2 ">
             <div class="col-5 text-right">
-              <label for="email" class="form-label" id="pass">Password :</label>
+              <label for="email" class="form-label" id="pass">Password:</label>
             </div>
             <div class="col-3">
-              {% if  password %}
-                  <input type="password"  id="password" name="password" class="notokay">
-              {% else %}
-              <input type="password"  id="password" name="password" class="okay" value="{{password1}}">
-              {% endif %}
+              <input type="password" id="password" name="password">
             </div>
-            <div class="col-4">
-              <p data-toggle="tooltip"  data-placement="top" title="Password should be at least 8 character long containing at least one digit and special character (. @ # $ _)"><i class="fa fa-info-circle icon"></i></p>
+            <div class="col-4 border">
+              <p data-toggle="tooltip"  data-placement="top" title="Password should be at least 8 character long nad should at least "><i class="fa fa-question-circle" style="font-size:24px"></i></p>
             </div>
           </div>
           <div class="row my-2 ">
             <div class="col-5 text-right">
-              <label  class="form-label" id="checkpass"> Check Password : </label>
+              <label for="email" class="form-label" id="checkpass">Password:</label>
             </div>
             <div class="col-3">
-              {% if  checkpassword %}
-                  <input type="password"  id="checkpassword" name="checkpassword" class="notokay">
-              {% else %}
-              <input type="password"  id="checkpassword" name="checkpassword" class="okay" value="{{checkpassword1}}">
-              {% endif %}
+              <input type="password" id="checkpassword" name="checkpassword">
             </div>
           </div>
           <div class="row">

@@ -10,7 +10,7 @@
     <style>
 
       body{
-        background-image: url('https://images.unsplash.com/photo-1517707711963-adf9078bdf01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'); no-repeat center center fixed
+        background-image: url('https://images.unsplash.com/photo-1536566482680-fca31930a0bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'); no-repeat center center fixed
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -50,7 +50,7 @@
       }
       .time{
           position:fixed;
-          top:38%;
+          top:39%;
           left:60%;
       }
 
@@ -86,7 +86,7 @@
           </div>
           <div class="row my-2">
               <div class="col-5">
-                <div class="time"><span id="time">02:00</span></div>
+                <div class="time"><span id="time">02:00</span><a id="resetotp" href='forgetpwd' style="pointer-events:none; opacity:0.5;">Resend OTP</a></div>
               </div>
           </div>
           <div class="row">
@@ -109,14 +109,18 @@
     
             display.textContent = minutes + ":" + seconds;
     
-            if (--timer < 0) {
-                timer = duration;
+            if (--timer < 0){
+              timer = 0
+              a = document.getElementById("resetotp");
+              a.style.pointerEvents = "visible";
+              a.style.opacity = 1;
+
             }
         }, 1000);
     }
     
     window.onload = function () {
-        var fiveMinutes = 60 * 2,
+        var fiveMinutes = 60 * 1,
             display = document.querySelector('#time');
         startTimer(fiveMinutes, display);
     };

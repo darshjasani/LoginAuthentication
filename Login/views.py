@@ -7,7 +7,6 @@ from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from random import randint
 import time
-import time
 # Create your views here.
 
 def index(request):
@@ -157,6 +156,7 @@ def otppage(request):
         if otp_got == "":
             context={
                 "otp":True,
+                "disabled":"none",
             }
             messages.info(request,'Please enter the otp')
             return render(request,'otppage.html',context)
