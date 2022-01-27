@@ -1,0 +1,52 @@
+body{
+    background-image: url('https://images.unsplash.com/photo-1517707711963-adf9078bdf01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'); no-repeat center center fixed
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .area{
+    background-image:url('https://images.unsplash.com/photo-1591541924200-d1217b346bf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position:fixed;
+    width:45%;
+    height:45%;
+    top:27%;
+    left:27%;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;       
+    border-radius:15px;
+    
+  }
+
+  .login, .signup{
+    font-size:30px;
+    color:yellow;
+    text-decoration:none!important;
+  }
+  .login:hover, .signup:hover{
+    color:brown;
+  }
+
+  #emailid,#email{
+    margin-top:20px;
+    font-size:25px;
+  }
+  #emailid{
+    color:yellow;
+  }
+
+  button{
+    margin-top:25px;
+    margin-left:25px;
+    font-size:20px;
+  }
+
+  .notokay{
+    border:5px solid red;
+  }
+  .okay{
+    border:2px solid black;
+  }
